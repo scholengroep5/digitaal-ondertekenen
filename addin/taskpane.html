@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Digitaal Ondertekenen</title>
+  <link rel="stylesheet" href="taskpane.css" />
+  <script src="https://appsforoffice.microsoft.com/lib/1.1/hosted/office.js"></script>
+</head>
+<body>
+  <h1>Digitaal Ondertekenen</h1>
+  <p class="subtitle">SGR5 — via ITSME &amp; Vlaanderen SigningHub</p>
+
+  <div class="section">
+    <div class="section-label">PDF-bijlagen</div>
+    <ul id="attachmentList" class="attachment-list">
+      <li class="no-pdf">Bijlagen laden...</li>
+    </ul>
+  </div>
+
+  <button id="signBtn" class="btn btn-primary" disabled>
+    Onderteken
+  </button>
+
+  <div id="statusArea" class="status-area">
+    <span id="statusText"></span>
+  </div>
+
+  <script src="taskpane.js"></script>
+</body>
+</html>

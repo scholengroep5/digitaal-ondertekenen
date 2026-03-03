@@ -1,0 +1,17 @@
+{
+  "name": "sign-flow",
+  "version": "1.0.0",
+  "description": "Outlook Add-in for digitally signing PDF attachments via ITSME/SigningHub",
+  "main": "server/app.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server/app.js"
+  },
+  "author": "SGR5",
+  "license": "UNLICENSED",
+  "private": true,
+  "dependencies": {
+    "dotenv": "^17.3.1",
+    "express": "^5.2.1"
+  }
+}
