@@ -18,19 +18,22 @@ const jobs = new Map();
 // POST /api/sign — start signing flow
 router.post('/sign', async (req, res) => {
   try {
-    const { filename, content_base64 } = req.body;
+    const { filename, content_base64, signer_email, signer_name } = req.body;
     if (!filename || !content_base64) {
       return res.status(400).json({ error: 'filename and content_base64 required' });
     }
+
+    const email = signer_email || 'ceo@sgr5.be';
+    const name = signer_name || 'SGR5 User';
 
     const client = hub();
     await client.authenticate();
     const { packageId } = await client.createWorkflow(filename);
     await client.uploadDocument(packageId, filename, content_base64);
-    await client.addSigner(packageId, 'ceo@sgr5.be', 'CEO SGR5');
+    await client.addSigner(packageId, email, name);
     await client.shareWorkflow(packageId);
 
-    jobs.set(packageId, { filename, status: 'pending', createdAt: new Date().toISOString() });
+    jobs.set(packageId, { filename, signerEmail: email, signerName: name, status: 'pending', createdAt: new Date().toISOString() });
 
     res.json({ id: packageId, status: 'pending' });
   } catch (err) {

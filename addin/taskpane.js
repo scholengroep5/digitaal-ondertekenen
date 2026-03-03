@@ -76,10 +76,16 @@ function startSigning() {
 }
 
 function sendToServer(filename, contentBase64) {
+  var profile = Office.context.mailbox.userProfile;
   fetch('/api/sign', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ filename: filename, content_base64: contentBase64 }),
+    body: JSON.stringify({
+      filename: filename,
+      content_base64: contentBase64,
+      signer_email: profile.emailAddress,
+      signer_name: profile.displayName,
+    }),
   })
     .then(function (res) { return res.json(); })
     .then(function (data) {
