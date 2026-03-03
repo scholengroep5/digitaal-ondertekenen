@@ -4,7 +4,9 @@
   "description": "Outlook Add-in for digitally signing PDF attachments via ITSME/SigningHub",
   "main": "server/app.js",
   "type": "module",
-  "scripts": {
+  "scripts": { 
+    "build": "npm ci",
+    "serve": "node server/app.js",
     "start": "node server/app.js"
   },
   "author": "SGR5",
